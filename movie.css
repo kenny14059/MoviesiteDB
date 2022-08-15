@@ -1,6 +1,5 @@
 :root{
    --primary:#262231;
-
    --heading-anime-delay-time: 300ms;
    --link-anime-delay-time: calc(var(--heading-anime-time) + 200ms);
    --movie-anime-delay-time: calc(var(--link-anime-delay-time) + 400ms);
@@ -27,15 +26,20 @@ a{
 }
 
 /*mobile styles*/
-header{ 
-    background-color: #08070b; 
+header{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+nav{ 
+    background-color: #090a0e; 
     background-image: url(images/RedjokerCrop.jpg);
     background-position: right;
     background-size: 50%;
     background-repeat: no-repeat;
-    animation: header-anime 300ms ease-in;
+    animation: nav-anime 300ms ease-in;
 }
-header h1{
+nav h1{
     font-size: 1.6em;
     grid-column: 1/8;
     grid-row: 1/2;
@@ -44,16 +48,16 @@ header h1{
 }
 /*toggle bar*/
 input[type='checkbox'].toggle + label{
-    position: relative;
+    position: fixed;
+    right: 5%;
+    top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 input[type='checkbox'].toggle{
-    position: absolute;
-    top: -10000px;
-    left: -10000px;
     cursor: pointer;
+    display: none;
 }
 
 input[type='checkbox'].toggle + label::before{
@@ -84,15 +88,14 @@ input[type='checkbox'].toggle:checked + label::before{
 input[type='checkbox'].toggle:checked + label::after{
    transform: translate(110%);
    background-color:#111;
-   transition: 200ms ease-in-out;
-   
+   transition: 200ms ease-in-out;  
 }
 input[type='checkbox'].toggle:focus + label::before{
    border: 1px solid rgb(202, 202, 212);
 }
 
 
-header .div-form{
+nav .div-form{
     grid-column: 2/-1;
     }
 
@@ -102,8 +105,7 @@ header .div-form{
 }
 #search {  
     padding: 10px 50px 10px 20px;
-    border-radius: 15px;
-    
+    border-radius: 15px;   
 }
 input:focus{
     outline: none;
@@ -122,13 +124,13 @@ input:focus{
     color: red;
 }
 
-header ul{
+nav ul{
     grid-column: 1/-1;
     display: flex;
     justify-content:space-between;
     align-items: center;
 }
-header li{
+nav li{
     padding: 0 30px 0 10px;
     animation-name: link-anime;
     animation-duration: 400ms;
@@ -136,23 +138,23 @@ header li{
     animation-delay: var(--link-anime-delay-time);
 }
 
-header li:nth-child(1){
+nav li:nth-child(1){
     animation-name: first-link-anime;
 }
-header li:nth-child(2){
+nav li:nth-child(2){
     animation-name: second-link-anime;
 }
-header li:nth-child(3){
+nav li:nth-child(3){
     animation-name: third-link-anime;
 }
-header li:nth-child(4){
+nav li:nth-child(4){
     animation-name: fourth-link-anime;
 }
-header  a:focus{
+nav  a:focus{
    color:rgb(207, 24, 24);
    border-bottom: 2px solid #c5bbe4;
 }
-header li:hover{
+nav li:hover{
     transform: scaleY(1.5);
 }
 
@@ -161,7 +163,6 @@ header li:hover{
     margin: 10px;
 }
 .movie{
-    background: transparent;
     background-color: #1f1a2e;
     grid-column: span 4;
     width: 90%;
@@ -206,24 +207,25 @@ footer{
     background-color:#111 ;
     padding: 10px;
 }
-.copyright{
-  grid-column: 1/5;
-  padding: 10px 10px 0px 20px;
+footer div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .socials{
-  grid-column: 7/-1;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 0 6px;
-  
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 6px;
+    
+  }
 .socials img{
     width: 20px;
+    margin: 10px;
 }
  
 /*animations*/
-@keyframes header-anime{
+@keyframes nav-anime{
     0%{
        transform: translateY(-100%);
     }
@@ -308,10 +310,7 @@ footer{
     }
 }
 
-/*small tablets */
-@media screen and (min-width:500px) {
-    
-}
+
 /*small laptops*/
 @media screen and (min-width:760px) {
     
@@ -325,8 +324,7 @@ footer{
         transform: scale(1.06);
     }
     .section{
-        grid-template-columns: repeat(9,1fr);
-        
+        grid-template-columns: repeat(9,1fr);  
     }
     .movie{
         margin: 1rem;
@@ -335,17 +333,19 @@ footer{
     }
       
 }
-
+/* large screens */
 @media screen and (min-width:960px) {
-    header ul{
+    nav{
+        background-size: 40%;
+    }
+    nav ul{
         justify-content: space-evenly;
+    }
+    .section{
+        grid-template-columns: repeat(8,1fr);  
     }
     .movie{
         grid-column: span 2;
         height: 90%;
         }
-        .movie-info{
-        padding: 0px; 
-        }
-         
 }

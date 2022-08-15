@@ -19,9 +19,8 @@ function showMovies(data) {
 
     data.forEach(movie => {
         const {title, poster_path, vote_average, overview, id} = movie;
-        /* this are the variables asigned to the values in the movie array  */
         const movieEl = document.createElement('div');
-        movieEl.classList.add('movie');  //to add class movie to movieEl
+        movieEl.classList.add('movie'); 
         movieEl.innerHTML = `
         <img src="${ poster_path? IMG_URL+poster_path: "http://via.placeholder.com/1080x1580"}" alt="">
         <div class="movie-info">
