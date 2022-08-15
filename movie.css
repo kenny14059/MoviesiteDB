@@ -1,0 +1,351 @@
+:root{
+   --primary:#262231;
+
+   --heading-anime-delay-time: 300ms;
+   --link-anime-delay-time: calc(var(--heading-anime-time) + 200ms);
+   --movie-anime-delay-time: calc(var(--link-anime-delay-time) + 400ms);
+   --input-anime-delay-time:calc(var(--movie-anime-delay-time));
+}
+body{
+    margin: 0;
+    font-family: 'Patrick Hand', cursive;
+     background-color:var(--primary) ;
+     color: #fff;
+     box-sizing: border-box;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    gap: 10px;
+}
+
+/*mobile styles*/
+header{ 
+    background-color: #08070b; 
+    background-image: url(images/RedjokerCrop.jpg);
+    background-position: right;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    animation: header-anime 300ms ease-in;
+}
+header h1{
+    font-size: 1.6em;
+    grid-column: 1/8;
+    grid-row: 1/2;
+    margin: 10px 20px 0 20px;
+    animation: heading-anime 200ms ease-in var(--heading-anime-delay-time);
+}
+/*toggle bar*/
+input[type='checkbox'].toggle + label{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input[type='checkbox'].toggle{
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
+    cursor: pointer;
+}
+
+input[type='checkbox'].toggle + label::before{
+    content: '';
+    left: 20%;
+    height: 1em;
+    width: 2em;
+    background-color: #ffffff44;
+    border-radius: 5em;
+    margin-right: 1.5em;
+
+}
+input[type='checkbox'].toggle + label::after{
+    content: '';
+    position: absolute;
+    left: 0.2em;
+    font-size: .9em;
+    height: 0.9em;
+    width: 0.9em;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(0);
+    transition: transform 200ms ease-in-out,  background-color 200ms ease-in-out;
+}
+input[type='checkbox'].toggle:checked + label::before{
+  background-color: rgb(223, 169, 20);
+}
+input[type='checkbox'].toggle:checked + label::after{
+   transform: translate(110%);
+   background-color:#111;
+   transition: 200ms ease-in-out;
+   
+}
+input[type='checkbox'].toggle:focus + label::before{
+   border: 1px solid rgb(202, 202, 212);
+}
+
+
+header .div-form{
+    grid-column: 2/-1;
+    }
+
+.div-form{
+    position: relative;
+    width: 243px;
+}
+#search {  
+    padding: 10px 50px 10px 20px;
+    border-radius: 15px;
+    
+}
+input:focus{
+    outline: none;
+}
+.icon-button{
+    position: absolute;
+    right: 2px;
+    bottom: 30%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.search-icon:hover{
+    color: red;
+}
+
+header ul{
+    grid-column: 1/-1;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+header li{
+    padding: 0 30px 0 10px;
+    animation-name: link-anime;
+    animation-duration: 400ms;
+    animation-timing-function: ease-in;
+    animation-delay: var(--link-anime-delay-time);
+}
+
+header li:nth-child(1){
+    animation-name: first-link-anime;
+}
+header li:nth-child(2){
+    animation-name: second-link-anime;
+}
+header li:nth-child(3){
+    animation-name: third-link-anime;
+}
+header li:nth-child(4){
+    animation-name: fourth-link-anime;
+}
+header  a:focus{
+   color:rgb(207, 24, 24);
+   border-bottom: 2px solid #c5bbe4;
+}
+header li:hover{
+    transform: scaleY(1.5);
+}
+
+.section{
+    grid-column: 1/-1;
+    margin: 10px;
+}
+.movie{
+    background: transparent;
+    background-color: #1f1a2e;
+    grid-column: span 4;
+    width: 90%;
+    margin: 1rem 1rem 1rem 0.5rem ;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0 #111;
+    animation: movie-anime 500ms ease-in-out var(--movie-anime-delay-time);
+     
+}
+.movie:hover{
+    transform: scale(1.1);
+    background: rgb(59,20,59);
+}
+.movie img{
+    width: 100%;
+}
+.movie-info{ 
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    padding: 0  10px;    
+}
+.movie-info h3{
+  grid-column: 1/7;
+} 
+.movie-info span{
+    grid-column: 8/-1;
+} 
+.movie-info > *{
+    align-self: center;
+}
+.movie-info span.green{
+    color: rgb(11, 228, 11);
+}
+.movie-info span.orange{
+    color:rgb(224, 154, 24);
+}
+.movie-info span.red{
+    color: red;
+}
+
+footer{
+    background-color:#111 ;
+    padding: 10px;
+}
+.copyright{
+  grid-column: 1/5;
+  padding: 10px 10px 0px 20px;
+}
+.socials{
+  grid-column: 7/-1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 6px;
+  
+}
+.socials img{
+    width: 20px;
+}
+ 
+/*animations*/
+@keyframes header-anime{
+    0%{
+       transform: translateY(-100%);
+    }
+    100%{
+      transform: translateY(0);
+    }
+}
+@keyframes heading-anime{
+    0%{
+        transform: scaleY(0);
+     }
+     90%{
+         transform: scaleY(1.2);
+     }
+     100%{
+       transform: scaleY(1);
+     }
+}
+@keyframes input-anime{
+    0%{
+       opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+}
+
+@keyframes first-link-anime{
+    0%{
+       transform: translate(-1000%);
+    }
+    90%{
+        transform: translate(50%);
+    }
+    100%{
+      transform: translate(0);
+    }
+}
+@keyframes second-link-anime{
+    0%{
+        transform: scaleY(0);
+     }
+     90%{
+         transform: scaleY(1.1);
+     }
+     100%{
+        transform: scaleY(1);
+     }
+}
+@keyframes third-link-anime{
+    0%{
+        transform: scaleY(0);
+     }
+     90%{
+         transform: scaleY(1.1);
+     }
+     100%{
+        transform: scaleY(1);
+     }
+}
+@keyframes fourth-link-anime{
+    0%{
+        transform: translate(1000%);
+     }
+     90%{
+         transform: translate(-50%);
+     }
+     100%{
+       transform: translate(0);
+     }
+}
+
+@keyframes movie-anime{
+    0%{
+     transform: translateY(20%);
+    }
+    90%{
+        transform: translateY(30px);
+    }
+    100%{
+     transform: translateY(0);
+    }
+}
+
+/*small tablets */
+@media screen and (min-width:500px) {
+    
+}
+/*small laptops*/
+@media screen and (min-width:760px) {
+    
+     .div-form input{   
+         width: 300px;
+        }
+    .icon-button{
+        right: -20%;
+    }
+    .movie:hover{
+        transform: scale(1.06);
+    }
+    .section{
+        grid-template-columns: repeat(9,1fr);
+        
+    }
+    .movie{
+        margin: 1rem;
+        width: 85%;
+        grid-column: span 3;
+    }
+      
+}
+
+@media screen and (min-width:960px) {
+    header ul{
+        justify-content: space-evenly;
+    }
+    .movie{
+        grid-column: span 2;
+        height: 90%;
+        }
+        .movie-info{
+        padding: 0px; 
+        }
+         
+}

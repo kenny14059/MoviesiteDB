@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link rel="stylesheet" href="movie.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <script src="movie.js" defer></script>
+    <script src="basic.js" defer ></script>
+</head>
+<body>
+    <header class="grid">
+        <h1>Find Movies,Tv Series,<br> and more...</h1>
+        <input type="checkbox" id="check" class="toggle" onclick="check(checkbox)">
+        <label for="check"></label>
+        <div class="div-form">
+            <form action="">
+                <input type="search" placeholder="Sherlock Hommes" id="search">
+            </form>
+           <button class="icon-button"> <i class="search-icon fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        
+        <ul>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Tv Series</a></li>
+            <li><a href="#">latest</a></li>
+            <li><a href="#">Upcoming</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section class="section grid">
+            <div class="movie">
+                <img src="" alt="">
+                <div class="movie-info grid">
+                    <h3>Title</h3>
+                    <span>8.1</span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="grid">
+        <div class="copyright">copyright @2022 M.H Productions</div>
+        <ul class="socials" >
+            <li><a href=""><img src="images/icon_fb.svg" alt=""></a></li>
+            <li><a href=""><img src="images/icon_tw.svg" alt=""></a></li>
+        </ul>
+     </div>
+    </footer>
+</body>
+</html>
